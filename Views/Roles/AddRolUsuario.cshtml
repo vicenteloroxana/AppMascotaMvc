@@ -1,0 +1,33 @@
+﻿@using AppMascotaMvc.Models.ViewModel
+@model List<UsuarioRolViewModel>
+@{
+    ViewBag.Title = "Roles de Usuarios";
+    
+}
+@{
+    var roleId = ViewBag.roleId;
+
+}
+<form method="post" class="container" >
+    <div class="card">
+        <div class="card-header">
+            <h2>Añadir o borrar usuarios a este rol</h2>
+        </div>
+    </div>
+    <div class="card-body">
+        @for (int i=0;i<Model.Count;i++) { 
+            <div class="form-check">
+                <input type="hidden" asp-for="@Model[i].UsuarioId"/>
+                <input type="hidden" asp-for="@Model[i].UsuarioEmail"/>
+                <input asp-for="@Model[i].EstaSeleccionado" class="form-check-input"/>
+                <label class="form-check-label" asp-for="@Model[i].EstaSeleccionado">@Model[i].UsuarioEmail</label>
+            </div>
+        
+        }
+    </div>
+    <div class="card-footer">
+        <input type="submit" value="Actualizar" class="btn btn-primary" />
+        <a asp-controller="Roles" asp-action="RolUsuario" asp-route-id="@roleId" class="btn btn-primary">Cancelar</a>
+        @* @Html.ActionLink("Cancelar", "RolUsuario", new { id = roleId }) *@
+    </div>
+</form>

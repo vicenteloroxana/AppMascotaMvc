@@ -1,0 +1,79 @@
+
+@model AppMascotaMvc.Models.ViewModel.PropietarioViewModel
+@using AppMascotaMvc.Models
+@{
+    ViewData["Title"] = "Crear Turno";
+}
+<div class="container  mt-3">
+    <h1 >Formulario Alta de Turno</h1>
+    <form asp-action="GuardarTurno" asp-controller="Turnos" method="POST"  >
+        <div class="contenedor-form ">
+            <div class="fomulario-propietario ">
+                <h2 class="text-center">Datos del Propietario</h2>
+                <div class="row">
+                     
+                    <div class="form-group col-md-6">
+                        <label asp-for="NombrePersona" class="control-label"></label>
+                        <input  asp-for="NombrePersona " class="form-control"  placeholder="Nombre">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Apellido" class="control-label"></label>
+                        <input  asp-for="Apellido" class="form-control"  placeholder="Apellido">
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="DNI" class="control-label"></label>
+                        <input  asp-for="DNI"  class="form-control" placeholder="DNI">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Telefono" class="control-label"></label>
+                        <input asp-for="Telefono" class="form-control"  placeholder="Telefono">
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                    </div>
+                    
+                </div>
+                <div class="form-group ">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input  asp-for="Email" class="form-control"   placeholder="Correo Electronico">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Domicilio" class="control-label"></label>
+                    <input  asp-for="Domicilio"  class="form-control" placeholder="Domicilio">
+                </div>
+                <div class="row">
+                    
+                    <div class="form-group col-md-6">
+                        <label asp-for="Turno.Fecha" class="control-label"></label>
+                        <input asp-for="Turno.Fecha" class="form-control" />
+                        <span asp-validation-for="Turno.Fecha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Turno.Hora" class="control-label"></label>
+                        <input asp-for="Turno.Hora" class="form-control" />
+                        <span asp-validation-for="Turno.Hora" class="text-danger"></span>
+                    </div>
+                    
+                </div> 
+                <div class="form-group ">
+                    <label asp-for="Turno.Descripcion" class="control-label"></label>
+                    <select asp-for="Turno.Descripcion" class="form-control" asp-items="ViewBag.Descripcion">
+                    <option >Seleccione una opcion</option>
+                    </select>
+                </div>    
+                
+            </div >
+            
+        </div>
+        <div class="container d-flex justify-content-center mt-3">   
+            <button id="altaTurno" type="submit" class="btn btnAltaTurno btn-md">Enviar</button>
+        </div>
+    </form>    
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+}

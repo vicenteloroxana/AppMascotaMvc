@@ -1,0 +1,155 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AppMascota</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    
+    
+    <!-- Vendor CSS Files -->
+    @* <link rel="stylesheet" href="~/vendor/icofont/icofont.min.css" >
+    <link rel="stylesheet" href="~/vendor/boxicons/css/boxicons.min.css" >
+    <link rel="stylesheet" href="~/vendor/venobox/venobox.css" >
+    <link rel="stylesheet" href="~/vendor/animate.css/animate.min.css" >
+    <link rel="stylesheet" href="~/vendor/remixicon/remixicon.css" >
+    <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.carousel.min.css" >
+    <link rel="stylesheet" href="~/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" > *@
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+
+    <!-- iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <!-- estilos -->
+    
+    <link rel="stylesheet" href="~/css/estilos.css" />
+    <link rel="stylesheet" href="~/css/misestilos.css" />
+    
+</head>
+<body>
+    <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+        <i class="fas fa-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
+        <i class="fas fa-phone-alt"></i> 0387 437-3490
+        <i class="fas fa-map-marker-alt"></i> Lavalle 530, Salta
+      </div>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="/">Hosp<span class="spanMascota">Mascotas</span><i class="fas fa-hospital-symbol"></i></a></h1>
+      
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active nav-item" >
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+          </li>
+          @* @if (SignInManager.IsSignedIn(User))
+          {} *@
+            <li><a class="nav-link"asp-area="" asp-controller="Turnos" asp-action="CrearTurno">Obterner Turno</a></li>
+            
+          
+          
+          @if (SignInManager.IsSignedIn(User)&&User.IsInRole("SuperAdmin"))
+          {
+            <li><a class="nav-link"asp-area="" asp-controller="Roles" asp-action="GetRoles">Gestionar Roles</a></li>
+            <li class="drop-down"><a clas="nav-link">Movil de Castración</a>
+                <ul>
+                    <li><a asp-controller="Moviles" asp-action="Create" >Crear</a></li>
+                    
+                    
+                </ul>
+            </li> 
+          }
+          @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Administrador")|| User.IsInRole("Veterinario")) )
+          {
+            
+
+              <li class="drop-down"><a clas="nav-link">Planillas</a>
+                <ul>
+                    <li><a asp-controller="Planillas" asp-action="Index" asp-route-d="Atencion Veterinaria">Atencion Veterinaria</a></li>
+                    
+                    <li><a asp-area="" asp-controller="Planillas" asp-action="Index" asp-route-d="Castracion">Castracion</a></li>
+                </ul>
+              </li>  
+            
+          }
+          @if (SignInManager.IsSignedIn(User)&&User.IsInRole("Veterinario"))
+          {
+            <li class="drop-down"><a clas="nav-link">Mascotas</a>
+              <ul>
+                  <li><a asp-controller="Mascotas" asp-action="Index" asp-route-d="Atencion Veterinaria">Atencion Veterinaria</a></li>
+                  
+                  <li><a asp-area="" asp-controller="Mascotas" asp-action="Index" asp-route-d="Castracion">Castracion</a></li>
+              </ul>
+            </li>
+          }
+          <partial name="_LoginPartial" /> 
+        </ul>
+        
+         
+      </nav><!-- .nav-menu -->
+
+      
+      @* <a class="appointment-btn scrollto" asp-area="" asp-controller="Logins" asp-action="Login">Iniciar Sesión</a> *@
+    </div>
+  </header><!-- End Header --> 
+  <div class="contenedor">
+    @RenderBody()
+    
+
+  </div>
+  
+    
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - AppMascota - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <!-- Tabla -->
+  @* <script src="~/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="~/vendor/php-email-form/validate.js"></script>
+  <script src="~/vendor/venobox/venobox.min.js"></script>
+  <script src="~/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="~/vendor/counterup/counterup.min.js"></script>
+  <script src="~/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="~/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script> *@
+    
+    <!-- JS Files -->
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
+    <!-- export -->
+    <script src="https://unpkg.com/xlsx@latest/dist/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
+    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
+    
+    
+    
+    @await RenderSectionAsync("Scripts", required: false)
+    
+    
+
+</body>
+</html>

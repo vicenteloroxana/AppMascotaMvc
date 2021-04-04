@@ -1,0 +1,72 @@
+@model IEnumerable<AppMascotaMvc.Models.ViewModel.TurnoViewModel>
+@{
+    ViewData["Title"] = "Planilla";
+}
+<table class="table container">
+    <h1 class="text-center">@ViewBag.Descripcion </h1>
+    <thead>
+        <tr>
+            <th>
+                Nombre y Apellido
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Propietario.DNI)
+                
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hora)
+            </th>
+            
+            <th>
+                Opciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Propietario.NombrePersona)
+                    @Html.DisplayFor(modelItem => item.Propietario.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Propietario.DNI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hora)
+                </td>
+                
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.PropietarioID" asp-route-d="@ViewBag.Descripcion" class="btn btn-primary btn-sm " title="Ver Más">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>
+
+                    <a asp-action="Create" asp-controller="Mascotas"  asp-route-id="@item.PropietarioID" class="btn btn-info btn-sm " title="Agregar Mascota">
+                        <i class="fas fa-paw"></i>
+                    </a>
+                    
+                    <a asp-action="Edit" asp-route-id="@item.PropietarioID" title="Editar" class="btn btn-secondary btn-sm" asp-action="Edit" asp-route-id="@item.PropietarioID">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                    
+                    <a asp-action="Delete" asp-route-id="@item.PropietarioID" class="btn btn-danger btn-sm " title="Eliminar">
+                        <i class="far fa-trash-alt"></i>
+                    </a>
+                
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

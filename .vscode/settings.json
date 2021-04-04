@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/5887e33b-778a-478d-ba77-a9516d7e699d/resourceGroups/AppMascota/providers/Microsoft.Web/sites/AppMascota",
+  "appService.deploySubpath": "publish"
+}

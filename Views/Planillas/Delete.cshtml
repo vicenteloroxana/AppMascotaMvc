@@ -1,0 +1,72 @@
+@model AppMascotaMvc.Models.ViewModel.TurnoViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="container">
+    <h1>Delete</h1>
+    <h3>Esta seguro/a de querer eliminar al propietario?</h3>
+    <h4>Propietario</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Propietario.DNI)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Propietario.DNI)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model =>  model.Fecha)
+        </dd >
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hora)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model =>  model.Hora)
+        </dd >
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Propietario.NombrePersona)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model =>  model.Propietario.NombrePersona)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Propietario.Apellido)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model =>  model.Propietario.Apellido)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Propietario.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model =>  model.Propietario.Email)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Propietario.Domicilio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model =>  model.Propietario.Domicilio)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Propietario.Telefono)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model =>  model.Propietario.Telefono)
+        </dd class>
+    </dl>
+    
+     <form asp-action="Delete">
+        <input type="hidden" asp-route-id="@Model.PropietarioID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" asp-route-d="@Model.Descripcion">Volver</a>
+        
+    </form> 
+   
+    
+</div>

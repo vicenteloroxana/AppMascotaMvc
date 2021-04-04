@@ -1,0 +1,84 @@
+@model IEnumerable<AppMascotaMvc.Models.ViewModel.MascotaViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Mascotas para @ViewBag.Descripcion</h1>
+
+<p class="container">
+    <a asp-action="Create" asp-route-id="@ViewBag.PropietarioID">Agregar Mascota para este Propietario</a>
+</p>
+<table class="table container">
+    <thead>
+        <tr>
+            <th>
+                Propietario
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Raza)
+            </th>
+            
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Propietario.NombrePersona)
+                @Html.DisplayFor(modelItem => item.Propietario.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Raza)
+            </td>
+            
+            
+            <td>
+                    <a asp-action="Details" asp-route-id="@item.MascotaID" class="btn btn-primary btn-sm " title="Ver Más">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>
+                    
+                    
+                    @if(item.Descripcion=="Atencion Veterinaria"){
+                    <a asp-action="Create" asp-controller="Fichas" asp-route-id="@item.MascotaID" class="btn btn-info btn-sm " title="Agregar Ficha">
+                        <i class="far fa-file-alt"></i>
+                    </a> 
+
+                    }
+                    
+                    <a asp-action="Edit" asp-route-id="@item.MascotaID" title="Editar" class="btn btn-secondary btn-sm" asp-action="Edit" asp-route-id="@item.PropietarioID">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                    
+                    <a asp-action="Delete" asp-route-id="@item.MascotaID" class="btn btn-danger btn-sm " title="Eliminar">
+                        <i class="far fa-trash-alt"></i>
+                    </a>
+                
+                </td>
+        </tr>
+    }
+    </tbody>
+</table>

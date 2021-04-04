@@ -1,0 +1,39 @@
+@model AppMascotaMvc.Models.ViewModel.MascotaViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <h4>Datos de la Mascota @Model.Nombre</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Caracteristica)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Caracteristica)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        
+
+    </dl>
+</div>
+<div class="container">
+    <a asp-action="Edit" asp-route-id="@Model.MascotaID" class="btn btn-success">Edit</a> 
+    <a asp-action="Index" class="btn btn-info" asp-route-d="@Model.Descripcion">Back to List</a>
+    @if(Model.Descripcion == "Atencion Veterinaria"){
+        <a class= "btn btn-warning"asp-controller="Fichas" asp-action="Details" asp-route-id="@Model.MascotaID">Ver Ficha</a>         
+    }
+</div>

@@ -1,0 +1,35 @@
+@model AppMascotaMvc.Models.ViewModel.PropietarioViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-3">
+    <h4>Más Datos del Propietario @Model.NombrePersona @Model.Apellido</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Domicilio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Domicilio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+    </dl>
+</div>
+<div class="container">
+    <a asp-action="Edit" asp-route-id="@Model.PropietarioID" class="btn btn-sucess">Edit</a> |
+    <a asp-action="Index" asp-route-d="@ViewBag.Descripcion" class="btn btn-info">Volver</a>
+</div>

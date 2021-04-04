@@ -1,0 +1,22 @@
+@model AppMascotaMvc.Models.ViewModel.CrearRolViewModel
+@{
+    ViewBag.Title="Crear nuevo rol";
+
+}
+
+<form class="mt-3 container" asp-action="CrearRol" asp-controller="Roles" method="POST"  >
+    <h1>Crear rol</h1>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row">
+        <label asp-for="NombreRol" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input  asp-for="NombreRol " class="form-control" type="text"  placeholder="Nombre">
+            <span asp-validation-for="NombreRol" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-warning">Crear Rol</button>
+        </div>
+    </div>
+</form>    

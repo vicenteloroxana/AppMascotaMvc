@@ -1,0 +1,46 @@
+@model AppMascotaMvc.Models.ViewModel.FichaViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="row">
+    <div class="container">
+        <h1>Edit</h1>
+        <h4>Ficha</h4>
+        <hr />
+        <form asp-action="Edit" method="POST">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <input type="hidden" asp-for="FichaID" /> 
+             <input type="hidden" asp-for="MascotaID" /> 
+            <div class="form-group">
+                <label asp-for="Pelaje" class="control-label"></label>
+                <input asp-for="Pelaje" class="form-control" />
+                <span asp-validation-for="Pelaje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mucosa" class="control-label"></label>
+                <input asp-for="Mucosa" class="form-control" />
+                <span asp-validation-for="Mucosa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SignosClinicos" class="control-label"></label>
+                <input asp-for="SignosClinicos" class="form-control" />
+                <span asp-validation-for="SignosClinicos" class="text-danger"></span>
+            </div>
+            
+                        
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <a class="btn btn-success"asp-action="Index" asp-controller="Mascotas" asp-route-d="Atencion Veterinaria">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,61 @@
+@model AppMascotaMvc.Models.ViewModel.FichaViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="row">
+            
+    <div class="container">
+        <h1>Create</h1>
+        <h4>Ficha</h4>
+        <hr />
+        <form asp-action="CreateFicha">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <input type="text" asp-for="Descripcion" />  *@
+            <div class="form-group">
+                <label asp-for="MascotaID" class="control-label"></label>
+                <input asp-for="MascotaID" class="form-control" />
+                <span asp-validation-for="MascotaID" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Mascota.Nombre" class="control-label"></label>
+                <input asp-for="Mascota.Nombre" class="form-control" />
+                <span asp-validation-for="Mascota.Nombre" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pelaje" class="control-label"></label>
+                <input asp-for="Pelaje" class="form-control" />
+                <span asp-validation-for="Pelaje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mucosa" class="control-label"></label>
+                <input asp-for="Mucosa" class="form-control" />
+                <span asp-validation-for="Mucosa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SignosClinicos" class="control-label"></label>
+                <input asp-for="SignosClinicos" class="form-control" />
+                <span asp-validation-for="SignosClinicos" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <a class="btn btn-success"asp-action="Index" asp-controller="Mascotas" asp-route-d="Atencion Veterinaria">Volver al Index</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

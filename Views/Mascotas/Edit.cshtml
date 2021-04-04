@@ -1,0 +1,72 @@
+@model AppMascotaMvc.Models.ViewModel.MascotaViewModel
+@* @model AppMascotaMvc.Models.ViewModel.TurnoPropietario *@
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="row">
+    <div class="container">
+        <h1>Edit</h1>
+        <h4>Mascota</h4>
+        <hr />
+        <form asp-action="Edit" method="POST">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <input type="hidden" asp-for="MascotaID" /> 
+             <input type="hidden" asp-for="PropietarioID" /> 
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sexo" class="control-label"></label>
+                <input asp-for="Sexo" class="form-control" />
+                <span asp-validation-for="Sexo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Edad" class="control-label"></label>
+                <input asp-for="Edad" class="form-control" />
+                <span asp-validation-for="Edad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Raza" class="control-label"></label>
+                <input asp-for="Raza" class="form-control" />
+                <span asp-validation-for="Raza" class="text-danger"></span>
+            </div>
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label asp-for="Descripcion" class="control-label"></label>
+                    <select asp-for="Descripcion" class="form-control" asp-items="ViewBag.Descripcion">
+                    <option >Seleccione una opcion</option>
+                    </select>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label asp-for="Caracteristica" class="control-label"></label>
+                <textarea rows="5" asp-for="Caracteristica" class="form-control"></textarea> 
+                <span asp-validation-for="Caracteristica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observacion" class="control-label"></label>
+                <textarea rows="5" asp-for="Observacion" class="form-control"></textarea> 
+                
+                <span asp-validation-for="Observacion" class="text-danger"></span>
+            </div>
+                        
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <a asp-action="Index" asp-route-d="@Model.Descripcion">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,50 @@
+@model AppMascotaMvc.Models.ViewModel.FichaViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <h4>Datos de la Ficha </h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MascotaID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MascotaID)
+        </dd>
+        @* <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd> *@
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pelaje)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pelaje)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mucosa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mucosa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SignosClinicos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SignosClinicos)
+        </dd>
+        
+
+    </dl>
+</div>
+<div class="container">
+    <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model.FichaID">Edit</a> |
+    <a class="btn btn-info" asp-action="Delete" asp-route-id="@Model.FichaID">Delete</a> |
+    <a class="btn btn-primary" asp-action="Index" asp-controller="Mascotas" asp-route-d="Atencion Veterinaria">Volver al Index</a>
+    
+</div>

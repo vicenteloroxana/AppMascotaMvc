@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<IdentityRole>
+
+@{
+    ViewBag.Title = "Listado de Roles";
+
+}
+<h1 class="text-center">Listado de Roles</h1>
+@if (Model.Any())
+{
+    
+    <div class="container">
+        <a class="btn btn-primary mb-2" asp-controller="Roles" asp-action="CrearRol">
+            Crear Rol
+        </a>
+    </div>
+    foreach (var role in Model)
+    {
+        <div class="card mb-3 container">
+            <div class="card-header">
+                Role id: @role.Id;
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@role.Name</h5>
+            </div>
+            <div class="card-footer">
+                
+                
+                <a asp-controller="Roles" asp-action="RolUsuario" asp-route-id="@role.Id">Ver Usuarios</a>
+                @* @Html.ActionLink("Ver Usuarios", "RolUsuario", new { id = role.Id }) *@
+            </div>
+        </div>
+    }
+}
+else { 
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Todavia no hay roles creados
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Usa este boton para crear un nuevo rol </h5>
+            <a class="btn btn-primary" asp-controller="Roles" asp-action="CrearRol">
+                Crear Rol
+            </a>
+        </div>
+    </div>
+    
+}

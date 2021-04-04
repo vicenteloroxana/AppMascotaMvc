@@ -1,0 +1,67 @@
+@model AppMascotaMvc.Models.ViewModel.MovilViewModel
+
+
+@{
+    ViewData["Title"] = "Create Movil";
+}
+
+
+
+
+
+    <div class="container">
+        <h1>Crear</h1>
+        <h4>Movil</h4>
+        <hr />
+        <form asp-action="Create" method="POST">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Fecha" class="control-label"></label>
+                    <input asp-for="Fecha" class="form-control" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div> 
+                <div class="form-group col-md-6">
+                    <label asp-for="Hora" class="control-label"></label>
+                    <input asp-for="Hora" class="form-control" />
+                    <span asp-validation-for="Hora" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Barrio" class="control-label"></label>
+                    <input asp-for="Barrio" class="form-control" />
+                    <span asp-validation-for="Barrio" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Zona" class="control-label"></label>
+                    <input asp-for="Zona" class="form-control" />
+                    <span asp-validation-for="Zona" class="text-danger"></span>
+                </div>
+            </div>
+            
+             
+            <div class="form-group">
+                <label asp-for="Servicio" class="control-label"></label>
+                <input  asp-for="Servicio" class="form-control"/>
+                <span asp-validation-for="Servicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input  asp-for="Telefono" class="form-control"/>
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+<div class="container">
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,36 @@
+﻿
+@model AppMascotaMvc.Models.ViewModel.RolUsuarioViewModel
+
+@{
+    ViewBag.Title = "Roles de Usuarios";
+    
+}
+
+
+<div class="card container mt-3">
+    <div class="card-header">
+        <h3>Usuarios con el rol @ViewBag.Nombre</h3>
+
+    </div>
+    <div class="card-body">
+        @if (Model.Usuarios.Any())
+        {
+            for (int i=0;i< Model.Usuarios.Count;i++)
+            {
+                <h5 class="card-title">@Model.Usuarios[i]</h5>
+            }
+        }
+        else { 
+            <h5 class="card-title">Ninguno por ahora</h5>
+        }
+
+    </div>
+    <div class="card-footer">
+        <a asp-controller="Roles" asp-action="AddRolUsuario" asp-route-rolId="@Model.Id" class="btn btn-primary">Añadir o Borrar Usuario</a>
+        <a asp-controller="Roles" asp-action="GetRoles" class="btn btn-primary">Volver al listado de roles</a>
+        @* @Html.ActionLink("Añadir o borrar usuario", "AddRolUsuario", new { id = Model.Id }) *@
+        @* @Html.ActionLink("Ver Usuarios", "RolUsuario", new { id = role.Id }) *@
+        
+    </div>
+</div>
+
